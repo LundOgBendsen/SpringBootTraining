@@ -3,7 +3,7 @@
 Shows a simple Spring Boot app with a main class and a REST resource.
 
 Take a look at:
-* [Main class](/src/main/java/dk/lundogbendsen/springboot/ex01/resources/HelloResource.java)
+* [Main class](src/main/java/dk/lundogbendsen/springboot/ex01/resources/HelloResource.java)
 * [Resource class](src/main/java/dk/lundogbendsen/springboot/ex01/resources/HelloResource.java)
 * [pom.xml](pom.xml)
 
