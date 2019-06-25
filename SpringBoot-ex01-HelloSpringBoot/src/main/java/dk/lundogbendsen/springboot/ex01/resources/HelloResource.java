@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloWorldResource {
+public class HelloResource {
 
     @GetMapping("/hello/{name}")
-    public String hello(@PathVariable(name = "name")String name) {
+    public String hello(@PathVariable(name = "name") String name) {
         return "Hello, " + name;
     }
 
