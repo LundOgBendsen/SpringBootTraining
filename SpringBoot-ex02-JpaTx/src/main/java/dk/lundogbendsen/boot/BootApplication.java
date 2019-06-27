@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import dk.lundogbendsen.boot.dao.AccountRepository;
 
 @SpringBootApplication
-public class BootAppApplication  {
+public class BootApplication  {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -17,6 +17,6 @@ public class BootAppApplication  {
 	AccountRepository repository;
 
 	public static void main(String[] args) {
-		SpringApplication.run(BootAppApplication.class, args);
+		SpringApplication.run(BootApplication.class, args);
 	}
 }
