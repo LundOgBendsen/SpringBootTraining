@@ -12,6 +12,7 @@ Repo for Spring and Spring Boot projects for training and courses
 | 5      | [SpringBoot-ex03-Docker](SpringBoot-ex03-Docker)                   | A simple boot app running in docker |
 | 6      | [SpringBoot-ex04-DI](SpringBoot-ex04-DI)                           | Dependency injection explained      |
 | 7      | [SpringBoot-ex05-Lombok](SpringBoot-ex05-Lombok)                   | Lombok explained                    |
+| 8      | [SpringBoot-ex06-Servlets](SpringBoot-ex06-Servlets)               | Demonstrating servlets and filters  |
 
 
 
