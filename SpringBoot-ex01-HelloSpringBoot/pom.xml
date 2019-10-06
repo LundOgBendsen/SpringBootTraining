@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>dk.lundogbendsen.springboot.ex</groupId>
-    <artifactId>SpringBoot-ex01-HelloWorld</artifactId>
+    <artifactId>SpringBoot-ex01-HelloSpringBoot</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>SpringBoot-ex01-HelloWorld</name>
 

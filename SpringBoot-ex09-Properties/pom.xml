@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dk.lundogbendsen.boot</groupId>
-	<artifactId>properties</artifactId>
+	<artifactId>SpringBoot-ex09-Properties</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringBoot-ex09-Properties</name>
 	<description>Demo project for Spring Boot</description>

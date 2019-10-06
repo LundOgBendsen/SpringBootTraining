@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.sonatype.mavenbook.multi</groupId>
+    <artifactId>simple-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>Multi Chapter Simple Parent Project</name>
+
+    <modules>
+        <module>AcubizTransform</module>
+        <module>Maven-ex01-iText</module>
+        <module>Maven-ex02-ApachePOI</module>
+        <module>SpringBoot-ex01-HelloSpringBoot</module>
+        <module>SpringBoot-ex02-JpaTx</module>
+        <module>SpringBoot-ex03-Docker</module>
+        <module>SpringBoot-ex04-DI</module>
+        <module>SpringBoot-ex05-Lombok</module>
+        <module>SpringBoot-ex06-Servlets</module>
+        <module>SpringBoot-ex07-Currency</module>
+        <module>SpringBoot-ex08-Logging</module>
+        <module>SpringBoot-ex09-Properties</module>
+    </modules>
+</project>
