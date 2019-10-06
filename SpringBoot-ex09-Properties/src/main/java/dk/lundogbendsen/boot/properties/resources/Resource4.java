@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-public class Resource3 {
+public class Resource4 {
     @Value("${string-from-application-properties}")
     private String stringValue;
 

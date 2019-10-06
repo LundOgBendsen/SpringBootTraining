@@ -22,5 +22,6 @@
         <module>SpringBoot-ex07-Currency</module>
         <module>SpringBoot-ex08-Logging</module>
         <module>SpringBoot-ex09-Properties</module>
+        <module>springboot-ex10-mongo</module>
     </modules>
 </project>
