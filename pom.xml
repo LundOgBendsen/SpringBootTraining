@@ -4,11 +4,10 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.sonatype.mavenbook.multi</groupId>
+    <groupId>dk.lundogbendsen.springboot.ex</groupId>
     <artifactId>simple-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>Multi Chapter Simple Parent Project</name>
 
     <modules>
         <module>AcubizTransform</module>
