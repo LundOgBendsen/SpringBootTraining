@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Resource2 {
+public class Resource3 {
     @Value("${JAVA_HOME}")
     private String stringValue;
 
-    @RequestMapping("/2")
+    @RequestMapping("/3")
     public String home() {
         StringBuilder sb = new StringBuilder();
         sb.append("<h1>Properties from operation system</h1>");

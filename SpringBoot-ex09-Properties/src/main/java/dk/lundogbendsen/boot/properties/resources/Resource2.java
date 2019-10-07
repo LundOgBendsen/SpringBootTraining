@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Resource1 {
+public class Resource2 {
     @Value("${string-from-application-properties}")
     private String stringValue;
 
@@ -18,7 +18,7 @@ public class Resource1 {
     @Value("${random-int-from-application-properties}")
     private Integer int2Value;
 
-    @RequestMapping("/1")
+    @RequestMapping("/2")
     public String home() {
         StringBuilder sb = new StringBuilder();
         sb.append("<h1>Properties from application.properties</h1>");

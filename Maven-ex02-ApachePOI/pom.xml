@@ -5,9 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dk.lundogbendsen</groupId>
-    <artifactId>poidemo</artifactId>
+    <artifactId>Maven-ex02-ApachePOI</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>poidemo</name>
     <description>Demo project for Apache POI</description>
 
     <properties>
