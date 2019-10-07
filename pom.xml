@@ -10,7 +10,6 @@
     <version>1.0</version>
 
     <modules>
-        <module>AcubizTransform</module>
         <module>Maven-ex01-iText</module>
         <module>Maven-ex02-ApachePOI</module>
         <module>SpringBoot-ex01-HelloSpringBoot</module>

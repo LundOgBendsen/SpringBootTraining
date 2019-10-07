@@ -14,7 +14,8 @@ Repo for Spring and Spring Boot projects for training and courses
 | 7      | [SpringBoot-ex05-Lombok](SpringBoot-ex05-Lombok)                   | Lombok explained                    |
 | 8      | [SpringBoot-ex06-Servlets](SpringBoot-ex06-Servlets)               | Demonstrating servlets and filters  |
 | 9      | [SpringBoot-ex07-Currency](SpringBoot-ex07-Currency)               | Demonstrating Scheduling            |
-
+| 10     | [SpringBoot-ex10-mongo](springboot-ex10-mongo)                     | Demonstrating Repository with mongo |
+| 11     | [springboot-examn](springboot-examn)                               | Assignment for students ending spring course |
 
 
 
