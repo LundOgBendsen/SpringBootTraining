@@ -23,5 +23,7 @@
         <module>SpringBoot-ex08-Logging</module>
         <module>SpringBoot-ex09-Properties</module>
         <module>springboot-ex10-mongo</module>
+        <module>springboot-examn</module>
+        <module>maven-plugins-inspection</module>
     </modules>
 </project>
