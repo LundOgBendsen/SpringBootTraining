@@ -1,8 +1,9 @@
 package com.acubiz.export.transform.config;
 
+import com.acubiz.export.transform.processing.Visitor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Output {
+public class Output implements ConfigElement{
     String type;
     @JsonProperty("fileName")
     String filename;
@@ -39,5 +40,10 @@ public class Output {
                 ", filename='" + filename + '\'' +
                 ", charset='" + charset + '\'' +
                 '}';
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

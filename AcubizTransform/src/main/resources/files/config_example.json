@@ -18,7 +18,7 @@
 
 			"type":"field",
 			"fieldType":"NUMBER",
-			"fieldName":"Amount",
+			"fieldName":" Amount#num",
 			"title":"Beløb",
 			"formatting":{
 				"justify":"LEFT",
@@ -29,7 +29,7 @@
 
 			"type":"field",
 			"fieldType":"TEXT",
-			"fieldName":"Description",
+			"fieldName":"Description#txt",
 			"title":"Bogføringstekst",
 			"formatting":{
 				"justify":"LEFT",

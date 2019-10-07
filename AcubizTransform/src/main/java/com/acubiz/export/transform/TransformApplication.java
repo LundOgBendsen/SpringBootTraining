@@ -1,19 +1,26 @@
 package com.acubiz.export.transform;
 
+import com.acubiz.export.transform.config.ConfigElement;
 import com.acubiz.export.transform.config.ConfigModel;
+import com.acubiz.export.transform.output.model.Document;
+import com.acubiz.export.transform.processing.AbstractInputVisitor;
+import com.acubiz.export.transform.processing.DocumentOutputTypeVisitor;
+import com.acubiz.export.transform.processing.InputElementVisitor;
+import com.acubiz.export.transform.processing.Visitor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.Stream;
 
 @SpringBootApplication
@@ -45,7 +52,56 @@ public class TransformApplication {
 		String jsonAsString = readFile(CONFIGFILENAME);
 		configModel = objectMapper.readValue(jsonAsString, ConfigModel.class);
 		System.out.println("--->" + configModel);
+		System.out.println("-------------------------");
+		System.out.println(buildDocument(configModel));
 
+	}
+
+
+	private static Document buildDocument(ConfigModel configModel) throws IOException {
+		Document root = new Document();
+		List<Visitor> preProcessingVisitors = List.of(new DocumentOutputTypeVisitor(root));
+		List<AbstractInputVisitor> inputVisitors = List.of(new InputElementVisitor(root));
+		List<Visitor> postProcessingVisitors = List.of();
+
+		apply(preProcessingVisitors, configModel);
+		apply(preProcessingVisitors, configModel.getVersion());
+		apply(preProcessingVisitors, configModel.getConfig());
+		apply(preProcessingVisitors, configModel.getConfig().getOutput());
+		configModel.getConfig().getItems().stream().forEach(e -> apply(preProcessingVisitors, e));
+
+
+		Reader in = new FileReader(INPUTFILENAME);
+		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withDelimiter(';')
+				.withFirstRecordAsHeader()
+				.parse(in);
+
+		for (CSVRecord r : records) {
+			apply(inputVisitors, configModel, r);
+			apply(inputVisitors, configModel.getVersion(),r);
+			apply(inputVisitors, configModel.getConfig(), r);
+			apply(inputVisitors, configModel.getConfig().getOutput(), r);
+			configModel.getConfig().getItems().stream().forEach(e -> apply(inputVisitors, e, r));
+		}
+
+		apply(postProcessingVisitors, configModel);
+		apply(postProcessingVisitors, configModel.getVersion());
+		apply(postProcessingVisitors, configModel.getConfig());
+		apply(postProcessingVisitors, configModel.getConfig().getOutput());
+		configModel.getConfig().getItems().stream().forEach(e -> apply(postProcessingVisitors, e));
+		return root;
+	}
+
+	static void apply(List<Visitor> v, ConfigElement element) {
+		v.stream().forEach(visitor -> element.accept(visitor));
+	}
+
+	static void apply(List<AbstractInputVisitor> v, ConfigElement element, CSVRecord line) {
+
+		v.stream().forEach(visitor -> {
+			visitor.setLine(line);
+			element.accept(visitor);
+		});
 	}
 
 	private static String transform(ConfigModel configModel, CSVRecord record, String outputModel) {

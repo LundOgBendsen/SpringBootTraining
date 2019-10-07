@@ -1,6 +1,8 @@
 package com.acubiz.export.transform.config;
 
-public class Item {
+import com.acubiz.export.transform.processing.Visitor;
+
+public class Item implements ConfigElement{
     String type;
     String fieldType;
     String fieldName;
@@ -56,5 +58,10 @@ public class Item {
                 ", title='" + title + '\'' +
                 ", formatting=" + formatting +
                 '}';
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

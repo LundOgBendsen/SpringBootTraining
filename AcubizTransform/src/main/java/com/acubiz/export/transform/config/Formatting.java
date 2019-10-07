@@ -1,6 +1,8 @@
 package com.acubiz.export.transform.config;
 
-public class Formatting {
+import com.acubiz.export.transform.processing.Visitor;
+
+public class Formatting implements ConfigElement{
     String justify;
     String pattern;
 
@@ -26,6 +28,12 @@ public class Formatting {
                 "justify='" + justify + '\'' +
                 ", pattern='" + pattern + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }
 

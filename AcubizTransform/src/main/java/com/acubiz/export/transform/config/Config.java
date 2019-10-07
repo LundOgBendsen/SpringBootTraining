@@ -1,8 +1,10 @@
 package com.acubiz.export.transform.config;
 
+import com.acubiz.export.transform.processing.Visitor;
+
 import java.util.List;
 
-public class Config {
+public class Config implements ConfigElement {
     Output output;
     List<Item> items;
 
@@ -28,5 +30,10 @@ public class Config {
                 "output=" + output +
                 ", items=" + items +
                 '}';
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

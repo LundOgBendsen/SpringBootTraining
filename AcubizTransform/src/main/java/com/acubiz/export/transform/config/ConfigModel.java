@@ -1,6 +1,8 @@
 package com.acubiz.export.transform.config;
 
-public class ConfigModel {
+import com.acubiz.export.transform.processing.Visitor;
+
+public class ConfigModel implements ConfigElement{
     String vendor;
     Version version;
     Config config;
@@ -37,5 +39,10 @@ public class ConfigModel {
                 ", version=" + version +
                 ", config=" + config +
                 '}';
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

@@ -1,7 +1,9 @@
 package com.acubiz.export.transform.config;
 
 
-public class Version {
+import com.acubiz.export.transform.processing.Visitor;
+
+public class Version implements ConfigElement{
     String display;
     int major;
     int minor;
@@ -47,5 +49,10 @@ public class Version {
                 ", minor=" + minor +
                 ", patch=" + patch +
                 '}';
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }
