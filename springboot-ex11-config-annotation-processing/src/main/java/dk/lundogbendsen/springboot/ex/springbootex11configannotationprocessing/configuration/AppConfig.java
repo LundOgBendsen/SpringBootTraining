@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "ex11")
 public class AppConfig {
+	/**
+	 * The App Name
+	 */
     private String appName;
 
     public String getAppName() {
