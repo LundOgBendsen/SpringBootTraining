@@ -1,5 +1,7 @@
 # when running application set program arguments: --spring.config.name=my
-string-from-application-properties=This comes from my.properties
-int-from-application-properties=100
-string2-from-application-properties=Meaning of life is ${int-from-application-properties} (MY) 
-random-int-from-application-properties=${random.int(100)}
+string-from-application-properties: This comes from my.properties
+int-from-application-properties: 100
+string2-from-application-properties: Meaning of life is ${int-from-application-properties} (MY)
+random-int-from-application-properties: ${random.int(100)}
+precedence:
+  application-source: classpath:/yamldemo.yaml in jar
