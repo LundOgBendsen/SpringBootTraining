@@ -23,6 +23,11 @@
         <module>SpringBoot-ex09-Properties</module>
         <module>springboot-ex10-mongo</module>
         <module>springboot-ex11-config-annotation-processing</module>
+        <module>springboot-ex12-autoconf-api</module>
+        <module>springboot-ex12-autoconf-timerfilters</module>
+        <module>springboot-ex13-aop</module>
+        <module>springboot-ex14-test</module>
+        <module>springboot-ex15-exceptionhandling</module>
         <module>springboot-examn</module>
         <module>maven-plugins-inspection</module>
     </modules>
