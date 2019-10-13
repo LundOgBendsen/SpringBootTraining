@@ -36,6 +36,11 @@ public class AccountResource {
 		return accountService.findAll();
 	}
 
+	@GetMapping("/accounts/nonnegative")
+	public List<Account> retrieveAllNonNegativeAccounts() {
+		return accountService.findAllNonNegative();
+	}
+
 	@GetMapping("/accounts/{id}")
 	public Account retrieveAccount(@PathVariable int id) {
 		Optional<Account> account = accountService.findById(id);

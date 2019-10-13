@@ -45,6 +45,11 @@ public class AccountService {
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
+	public List<Account> findAllNonNegative() {
+		return repo.findAccountsWithNonNegativeBalance();
+	}
+
+	@Transactional(propagation = Propagation.SUPPORTS)
 	public long count() {
 		return repo.count();
 	}
@@ -74,7 +79,7 @@ public class AccountService {
 		}
 	}
 	
-	@Transactional(propagation = Propagation.REQUIRED, rollbackFor={TransferException.class})
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void transferToWithError(Account from, Account to, double amount) {
 		Optional<Account> f = repo.findById(from.getId());
 		Optional<Account> t = repo.findById(to.getId());
