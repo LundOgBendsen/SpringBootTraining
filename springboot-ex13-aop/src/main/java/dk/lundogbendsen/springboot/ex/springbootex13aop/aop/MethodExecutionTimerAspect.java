@@ -16,7 +16,7 @@ public class MethodExecutionTimerAspect {
 
         long executionTime = System.currentTimeMillis() - start;
 
-        System.out.println(joinPoint.getSignature() + " executed in " + executionTime + "ms");
+        System.out.println(joinPoint.getSignature().getName() + " executed in " + executionTime + "ms");
         return proceed;
     }
 }

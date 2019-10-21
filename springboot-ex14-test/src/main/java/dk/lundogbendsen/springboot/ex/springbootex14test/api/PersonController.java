@@ -2,10 +2,8 @@ package dk.lundogbendsen.springboot.ex.springbootex14test.api;
 
 import dk.lundogbendsen.springboot.ex.springbootex14test.model.Person;
 import dk.lundogbendsen.springboot.ex.springbootex14test.service.MyService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 @RestController
 public class PersonController {
@@ -25,8 +23,8 @@ public class PersonController {
         return createdPerson.getId();
     }
 
-    @GetMapping
-    public Person get(Long id) {
+    @GetMapping("/{id}")
+    public Person get(WebRequest webRequest, @PathVariable Long id) {
         return myService.get(id);
     }
 }

@@ -50,6 +50,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>dk.lundogbendsen.boot.ex09.precedence.PrecedenceApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

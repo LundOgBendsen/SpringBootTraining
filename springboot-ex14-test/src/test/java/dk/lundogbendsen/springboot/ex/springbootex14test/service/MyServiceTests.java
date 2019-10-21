@@ -16,6 +16,8 @@ public class MyServiceTests {
 
 
     @Test
+    // Denne test starter IKKE en SpringContext. Mocking foregår derfor manuelt.
+    // Til gengæld kører testen lynhurtigt, som vi godt kan lide det med units.
     public void contextLoads() {
         myService.get(1L);
     }

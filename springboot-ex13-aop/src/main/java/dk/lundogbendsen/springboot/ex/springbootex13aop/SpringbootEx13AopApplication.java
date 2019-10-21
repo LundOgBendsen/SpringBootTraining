@@ -13,7 +13,6 @@ public class SpringbootEx13AopApplication {
 
         // Get Service bean
         MyService myService = context.getBean("myService", MyService.class);
-
         // Execute business method - how many log statements?
         myService.randomPause(1000);
 
