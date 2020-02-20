@@ -1,6 +1,5 @@
 package dk.lundogbendsen.springboot.ex.springbootex14test.api;
 
-import dk.lundogbendsen.springboot.ex.springbootex14test.model.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +19,8 @@ public class PersonControllerTest {
 
     @Test
     public void exampleTest() {
+        // This is a live request to the actual running springboot server. Data will be stored in a memory database (H2)
         ResponseEntity<Long> id = this.restTemplate.postForEntity("/", "Christian", Long.class);
         assertThat(id.getBody()).isEqualTo(1L);
-    }
-    @Test
-    public void getPersonTest() {
-        ResponseEntity<Person> person = this.restTemplate.getForEntity("/1", Person.class);
-        assertThat(person.getBody().getId()).isEqualTo(1L);
     }
 }
