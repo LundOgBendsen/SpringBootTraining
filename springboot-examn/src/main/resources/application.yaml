@@ -2,11 +2,20 @@ spring:
   jpa:
     generate-ddl: false
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create-drop
     show-sql: true
 
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
 
+---
   datasource:
     url: jdbc:mysql://localhost/productapi
     username: product
     password: my8charspassword
+  spring:
+    profiles:
+      active: test
