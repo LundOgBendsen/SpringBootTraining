@@ -1,6 +1,5 @@
 package dk.lundogbendsen.springboot.ex.springbootex14test.api;
 
-import dk.lundogbendsen.springboot.ex.springbootex14test.SpringbootEx14TestApplication;
 import dk.lundogbendsen.springboot.ex.springbootex14test.model.Person;
 import dk.lundogbendsen.springboot.ex.springbootex14test.repository.PersonRepository;
 import dk.lundogbendsen.springboot.ex.springbootex14test.service.MyService;
@@ -8,13 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -27,20 +22,25 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+// SpringRunner loads the Spring ApplicationContext which in turn make the Dependency Injection
 @RunWith(SpringRunner.class)
 
-// Full Spring Context
+// Alternative 1: The whole application
+// Kick off SpringBoot including AutoConfiguration including the WHOLE application an all of your Beans (@Component etc)
 //@SpringBootTest
+// Set up a MockMvc client as a Spring Bean
 //@AutoConfigureMockMvc
 
+// Alternative 2: Sliced application - nothing but very specific beans are included. No AutoConfiguration of anything.
 // Sliced SpringContext
+// Register the classes in the list as SpringBean
 @WebMvcTest({PersonController.class, MyService.class})
-@ContextConfiguration(classes = SpringbootEx14TestApplication.class)
 public class PersonControllerWebMvcTest {
 
     @Autowired
     private MockMvc mvc;
 
+    // Register a Mocked bean in the place of this type. This Mock will be Dependency Injected into the other Spring Beans
     @MockBean
     private PersonRepository personRepository;
 
