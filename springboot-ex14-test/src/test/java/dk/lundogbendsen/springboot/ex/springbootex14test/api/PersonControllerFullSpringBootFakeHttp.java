@@ -1,19 +1,21 @@
 package dk.lundogbendsen.springboot.ex.springbootex14test.api;
 
 import dk.lundogbendsen.springboot.ex.springbootex14test.model.Person;
+import dk.lundogbendsen.springboot.ex.springbootex14test.repository.PersonRepository;
 import dk.lundogbendsen.springboot.ex.springbootex14test.service.MyService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
 import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.core.Is.is;
@@ -22,36 +24,35 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(MockitoJUnitRunner.class)
-public class PersonControllerWebMvcUnitTest {
+// SpringRunner loads the Spring ApplicationContext which in turn make the Dependency Injection
+@RunWith(SpringRunner.class)
+
+// Kick off SpringBoot including AutoConfiguration including the WHOLE application an all of your Beans (@Component etc)
+@SpringBootTest
+// Set up a MockMvc client as a Spring Bean
+@AutoConfigureMockMvc
+public class PersonControllerFullSpringBootFakeHttp {
 
     @Autowired
     private MockMvc mvc;
 
-    @Mock
-    private MyService myService;
-
-    @InjectMocks
-    private PersonController personController;
-
-
-    @Before
-    public void setup() {
-        // MockMvc standalone approach
-        mvc = MockMvcBuilders.standaloneSetup(personController).build();
-    }
+    // Register a Mocked bean in the place of this type. This Mock will be Dependency Injected into the other Spring Beans
+    @MockBean
+    private PersonRepository personRepository;
 
     @Before
     public void init() {
         Person person = new Person();
         person.setName("Christian");
         person.setId(1L);
-        given(myService.get(1L)).willReturn(person);
+        given(personRepository.getOne(1L)).willReturn(person);
     }
 
     @Test
     public void exampleTest() throws Exception {
-        mvc.perform(get("/1").contentType(MediaType.APPLICATION_JSON))
+        MockHttpServletRequestBuilder requestBuilder = get("/1").contentType(MediaType.APPLICATION_JSON);
+        ResultActions perform = mvc.perform(requestBuilder);
+        perform
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$", hasKey("id")))
                 .andExpect(jsonPath("$", hasKey("name")))

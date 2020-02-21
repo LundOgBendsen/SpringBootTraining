@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MyServiceTests {
+public class MyServiceMockitoJUnitRunner {
     @Mock private PersonRepository personRepository;
 
     @InjectMocks
@@ -24,7 +24,7 @@ public class MyServiceTests {
         Person person = new Person();
         person.setName("Christian");
         person.setId(1L);
-        given(myService.get(1L)).willReturn(person);
+        given(personRepository.getOne(1L)).willReturn(person);
     }
 
     @Test

@@ -25,17 +25,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // SpringRunner loads the Spring ApplicationContext which in turn make the Dependency Injection
 @RunWith(SpringRunner.class)
 
-// Alternative 1: The whole application
-// Kick off SpringBoot including AutoConfiguration including the WHOLE application an all of your Beans (@Component etc)
-//@SpringBootTest
-// Set up a MockMvc client as a Spring Bean
-//@AutoConfigureMockMvc
-
-// Alternative 2: Sliced application - nothing but very specific beans are included. No AutoConfiguration of anything.
 // Sliced SpringContext
 // Register the classes in the list as SpringBean
 @WebMvcTest({PersonController.class, MyService.class})
-public class PersonControllerWebMvcTest {
+public class PersonControllerSlicedMockitoJUnitRunnerFakeHttp {
 
     @Autowired
     private MockMvc mvc;
