@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<!--    <property name="LOGS" value="./logs"/>-->
+
+<!--    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        <layout class="ch.qos.logback.classic.PatternLayout">-->
+<!--            <Pattern>-->
+<!--                LOGBACK! %black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable-->
+<!--            </Pattern>-->
+<!--        </layout>-->
+<!--    </appender>-->
+
+    <appender name="STASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>SpringBoot-ex08-Logging/logs/ex08.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logback/ex08.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+    <root level="DEBUG">
+        <appender-ref ref="STASH" />
+    </root>
+
+    <logger name="dk.lundogbendsen" level="trace" additivity="false">
+        <appender-ref ref="STASH"/>
+    </logger>
+
+</configuration>
