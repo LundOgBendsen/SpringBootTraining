@@ -13,11 +13,11 @@ public class SpringbootEx18SchedulerApplication {
 		SpringApplication.run(SpringbootEx18SchedulerApplication.class, args);
 	}
 
-	@Bean
+//	@Bean
 	public HeavyJobService heavyJobService() {
 		return new HeavyJobService();
 	}
-//	@Bean
+	@Bean
 	public ScheduledService scheduledService() {
 		return new ScheduledService();
 	}
