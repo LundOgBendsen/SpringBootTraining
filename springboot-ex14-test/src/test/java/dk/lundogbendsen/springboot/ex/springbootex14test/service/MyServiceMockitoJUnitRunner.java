@@ -2,36 +2,42 @@ package dk.lundogbendsen.springboot.ex.springbootex14test.service;
 
 import dk.lundogbendsen.springboot.ex.springbootex14test.model.Person;
 import dk.lundogbendsen.springboot.ex.springbootex14test.repository.PersonRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.BDDMockito.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class MyServiceMockitoJUnitRunner {
+//    @Rule public MockitoRule rule = MockitoJUnit.rule();
+
     @Mock private PersonRepository personRepository;
 
     @InjectMocks
     private MyService myService;
 
-    @Before
+//    @Before
+//    public void initMocks() {
+//        MockitoAnnotations.initMocks(this);
+//    }
+
+
+    @BeforeEach
     public void init() {
         Person person = new Person();
         person.setName("Christian");
         person.setId(1L);
-        given(personRepository.getOne(1L)).willReturn(person);
+        when(personRepository.getOne(1L)).thenReturn(person);
     }
 
     @Test
-    // Denne test starter IKKE en SpringContext. Mocking foregår derfor manuelt.
-    // Til gengæld kører testen lynhurtigt, som vi godt kan lide det med units.
     public void testGetPerson() {
-
         Person person = myService.get(1L);
         assertEquals(person.getName(), "Christian");
     }

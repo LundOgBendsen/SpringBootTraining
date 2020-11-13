@@ -12,13 +12,13 @@ import java.sql.SQLTimeoutException;
 @Slf4j
 public class PersonService {
 
-    // create always fail with ServiceException - maybe it is because name is not unique.
+    // create always fail with ServiceException - maybe it is because name is not unique. Handled by @ExceptionHandler
     public Person createAndFail(String name) {
         log.error("Person could not be created because I didn't like the name. Or maybe the name already exists.");
         throw new ServiceException("Failed");
     }
 
-    // create always fails because an exception of external origin occurred
+    // create always fails because an exception of external origin occurred - Handled by BasicErrorController
     public Person createAndDatabaseError(String name) {
         log.error("Person could not be created because the database exploded. This is NOT a Service fault. Therefore don't throw ServiceException");
         SQLTimeoutException dbError = new SQLTimeoutException("Connection to database timed out");
@@ -33,6 +33,6 @@ public class PersonService {
     // find fails because ID does not exist
     public Person getAndFail(Long id) {
         log.error("Person could not be found by the ID provided. Since there was an ID, the user must have expected that person to exists. Very Strange. This is worthy of a special Exception!");
-        throw new NotFoundServiceException("Not person with ID " + id);
+        throw new NotFoundServiceException("No person with ID " + id + " found");
     }
 }

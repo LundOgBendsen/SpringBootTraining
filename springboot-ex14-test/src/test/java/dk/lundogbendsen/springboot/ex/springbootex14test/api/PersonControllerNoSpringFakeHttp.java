@@ -2,12 +2,12 @@ package dk.lundogbendsen.springboot.ex.springbootex14test.api;
 
 import dk.lundogbendsen.springboot.ex.springbootex14test.model.Person;
 import dk.lundogbendsen.springboot.ex.springbootex14test.service.MyService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PersonControllerNoSpringFakeHttp {
 
     private MockMvc mvc;
@@ -31,13 +31,13 @@ public class PersonControllerNoSpringFakeHttp {
     private PersonController personController;
 
 
-    @Before
+    @BeforeEach
     public void setup() {
         // MockMvc standalone approach
         mvc = MockMvcBuilders.standaloneSetup(personController).build();
     }
 
-    @Before
+    @BeforeEach
     public void init() {
         Person person = new Person();
         person.setName("Christian");

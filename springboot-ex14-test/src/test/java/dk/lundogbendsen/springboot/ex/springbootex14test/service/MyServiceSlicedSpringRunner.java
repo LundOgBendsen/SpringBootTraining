@@ -2,43 +2,36 @@ package dk.lundogbendsen.springboot.ex.springbootex14test.service;
 
 import dk.lundogbendsen.springboot.ex.springbootex14test.model.Person;
 import dk.lundogbendsen.springboot.ex.springbootex14test.repository.PersonRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.security.auth.login.AppConfigurationEntry;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.BDDMockito.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 
 /**
  * Sliced SpringBoot application with only MyService and PersonRepository as Beans
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes={MyService.class})
 public class MyServiceSlicedSpringRunner {
     @MockBean
     private PersonRepository personRepository;
 
     @Autowired
-    ApplicationContext applicationContext;
-
-    @Autowired
     MyService myService;
 
-    @Before
+    @BeforeEach
     public void init() {
         Person person = new Person();
         person.setName("Christian");
         person.setId(1L);
-        given(personRepository.getOne(1L)).willReturn(person);
+        when(personRepository.getOne(1L)).thenReturn(person);
     }
 
     @Test

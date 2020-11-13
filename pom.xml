@@ -28,7 +28,14 @@
         <module>springboot-ex13-aop</module>
         <module>springboot-ex14-test</module>
         <module>springboot-ex15-exceptionhandling</module>
+        <module>springboot-ex16-resttemplate</module>
+        <module>springboot-ex17-actuator</module>
+        <module>springboot-ex18-scheduler</module>
+        <module>springboot-ex19-persistence</module>
+        <module>springboot-ex20-rabbitmq</module>
         <module>springboot-examn</module>
         <module>maven-plugins-inspection</module>
+        <module>SpringBoot-Rest-PersonApi-Assignment</module>
+        <module>SpringBoot-Rest-PersonApi-Assignment-api</module>
     </modules>
 </project>

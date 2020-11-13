@@ -29,3 +29,23 @@ turned off. See application.properties.
 ## Note
 1. See the LoggingController class for how to do the logging from Java.
 2. See this useful article: https://www.baeldung.com/spring-boot-logging
+
+
+## ELK example:
+1. Add Logback-logstash dependency:
+<!--    <dependency>-->
+<!--      <groupId>net.logstash.logback</groupId>-->
+<!--      <artifactId>logstash-logback-encoder</artifactId>-->
+<!--      <version>4.11</version>-->
+<!--    </dependency>-->
+2. Rename logback-logstash.xml to logback.xml
+3. Change logging pattern to include [%X] to emit MDC content
+4. Start the application to generate some logs
+5. Start ELK stack: `docker-compose up`. Use Kibana to create logstash-* index.
+If no index appear, exec into logstash and `touch /logs/ex08.log`
+6. See the logs arrive in Kibana (localhost:5601)
+7. run curl localhost:8080/solution1
+8. Use Kibana to refresh the logstash-* index to see the TRACE_ID is now a Filter.
+9. Add Sleuth dependency
+10. Run a few examples and refresh the logstash-* index again.
+11. See the Filters added by Sleuth.

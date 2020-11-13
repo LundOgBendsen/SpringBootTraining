@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -14,7 +16,7 @@ import java.util.Date;
 public class ServiceExceptionAdvice {
 
     @ExceptionHandler({ServiceException.class})
-    public ResponseEntity<Object> handleException(HttpServletRequest httpServletRequest, ServiceException se) {
+    public ResponseEntity<ApiError> handleException(HttpServletRequest httpServletRequest, ServiceException se) {
 
         HttpStatus status = se instanceof NotFoundServiceException ? HttpStatus.NOT_FOUND : HttpStatus.BAD_REQUEST;
 
@@ -29,5 +31,18 @@ public class ServiceExceptionAdvice {
         return new ResponseEntity<>(apiError, status);
     }
 
+    @ExceptionHandler(NotFoundServiceException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ResponseBody
+    public String handleException(Exception exception) {
+        return "ControllerAdvice: You have been baaad....";
+    }
+
+//    @ResponseBody
+//    @ExceptionHandler(NotFoundServiceException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String employeeNotFoundHandler(NotFoundServiceException ex) {
+        return ex.getMessage();
+    }
 
 }

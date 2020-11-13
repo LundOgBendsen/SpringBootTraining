@@ -1,6 +1,6 @@
 package dk.lundogbendsen.springboot.ex06;
 
-import dk.lundogbendsen.springboot.ex06.filters.MyFilter;
+import dk.lundogbendsen.springboot.ex06.filters.TracingFilter;
 import dk.lundogbendsen.springboot.ex06.servlets.HelloServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,18 +26,9 @@ public class DemoApplication {
 
 	@Bean
 	public FilterRegistrationBean filterRegistrationBean() {
-		FilterRegistrationBean bean = new FilterRegistrationBean(new MyFilter());
+		FilterRegistrationBean bean = new FilterRegistrationBean(new TracingFilter());
 		//map to path /*, i.e. all requests
-		bean.setUrlPatterns(Arrays.asList("/*"));
-
-
-		/*
-		// Mapping filter to a Servlet
-		bean.addServletRegistrationBeans(new ServletRegistrationBean[] {
-				servletRegistrationBean()
-		});
-
-		 */
+//		bean.addServletNames("helloServlet");
 		return bean;
 	}
 }

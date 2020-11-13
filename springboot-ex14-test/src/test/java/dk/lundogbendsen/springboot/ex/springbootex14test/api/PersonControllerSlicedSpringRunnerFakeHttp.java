@@ -3,14 +3,14 @@ package dk.lundogbendsen.springboot.ex.springbootex14test.api;
 import dk.lundogbendsen.springboot.ex.springbootex14test.model.Person;
 import dk.lundogbendsen.springboot.ex.springbootex14test.repository.PersonRepository;
 import dk.lundogbendsen.springboot.ex.springbootex14test.service.MyService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -23,12 +23,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 // SpringRunner loads the Spring ApplicationContext which in turn make the Dependency Injection
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 
 // Sliced SpringContext
 // Register the classes in the list as SpringBean
 @WebMvcTest({PersonController.class, MyService.class})
-public class PersonControllerSlicedMockitoJUnitRunnerFakeHttp {
+public class PersonControllerSlicedSpringRunnerFakeHttp {
 
     @Autowired
     private MockMvc mvc;
@@ -37,7 +37,7 @@ public class PersonControllerSlicedMockitoJUnitRunnerFakeHttp {
     @MockBean
     private PersonRepository personRepository;
 
-    @Before
+    @BeforeEach
     public void init() {
         Person person = new Person();
         person.setName("Christian");
