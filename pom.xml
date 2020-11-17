@@ -33,6 +33,7 @@
         <module>springboot-ex18-scheduler</module>
         <module>springboot-ex19-persistence</module>
         <module>springboot-ex20-rabbitmq</module>
+        <module>springboot-ex21-rest</module>
         <module>springboot-examn</module>
         <module>maven-plugins-inspection</module>
         <module>SpringBoot-Rest-PersonApi-Assignment</module>
