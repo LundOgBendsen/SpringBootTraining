@@ -10,6 +10,15 @@ public class AppConfig {
 	 * The App Name
 	 */
     private String appName;
+    private Colors colors;
+
+    public Colors getColors() {
+        return colors;
+    }
+
+    public void setColors(Colors colors) {
+        this.colors = colors;
+    }
 
     public String getAppName() {
         return appName;
