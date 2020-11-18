@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-   config.vm.synced_folder "../", "/springboottraining"
+   config.vm.synced_folder "../../", "/springboottraining"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -75,8 +75,13 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision :docker
-  config.vm.provision :docker_compose, yml: "/springboottraining/springboot-ex20-rabbitmq/docker-compose.yml", run: "once"
   config.vm.provision :docker_compose
+  config.vm.provision :shell, inline: "docker-compose -f /springboottraining/SpringBoot-ex08-Logging/docker-compose.yml pull"
+  config.vm.provision :shell, inline: "docker-compose -f /springboottraining/springboot-ex10-mongo/docker-compose.yml pull"
+  config.vm.provision :shell, inline: "docker-compose -f /springboottraining/springboot-ex19-persistence/docker-compose.yml pull"
+  config.vm.provision :shell, inline: "docker-compose -f /springboottraining/springboot-ex20-rabbitmq/docker-compose.yml pull"
+  config.vm.provision :shell, inline: "docker-compose -f /springboottraining/springboot-examn/database/docker-compose.yml pull"
+  # config.vm.provision :docker_compose, yml: "/springboottraining/springboot-ex20-rabbitmq/docker-compose.yml", run: "once"
   config.vm.provision "shell", inline: <<-SHELL
   SHELL
 end

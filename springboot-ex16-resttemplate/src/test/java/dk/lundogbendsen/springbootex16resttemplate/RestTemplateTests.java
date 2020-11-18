@@ -22,6 +22,7 @@ class RestTemplateTests {
 		final ResponseEntity<Person[]> forEntity = restTemplate.getForEntity(url, Person[].class);
 		assertEquals(HttpStatus.OK, forEntity.getStatusCode());
 		assertEquals(1, forEntity.getBody().length);
+		assertEquals("application/json", forEntity.getHeaders().getContentType().toString());
 		assertEquals("Christian", forEntity.getBody()[0].getName());
 	}
 
@@ -34,6 +35,13 @@ class RestTemplateTests {
 
 	@Test
 	public void testConsumeXml() {
+		// Must add an XML handler to pom.xml:
+/*
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+*/
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_XML));

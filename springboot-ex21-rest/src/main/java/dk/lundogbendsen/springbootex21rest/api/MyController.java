@@ -1,5 +1,7 @@
 package dk.lundogbendsen.springbootex21rest.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +10,9 @@ import java.util.Map;
 
 @RestController
 public class MyController {
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @PostMapping("/object/{id}")
     public Map<String, Object> getObject(
             @PathVariable String id,
