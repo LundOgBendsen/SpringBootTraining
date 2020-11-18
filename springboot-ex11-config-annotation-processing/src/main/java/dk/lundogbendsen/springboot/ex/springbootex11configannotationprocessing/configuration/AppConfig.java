@@ -9,8 +9,11 @@ public class AppConfig {
 	/**
 	 * The App Name
 	 */
-    private String appName;
-    private Colors colors;
+    private String appName = "the App";
+    /**
+     * An app must have a Color!
+     */
+    private Colors colors = Colors.RED;
 
     public Colors getColors() {
         return colors;
