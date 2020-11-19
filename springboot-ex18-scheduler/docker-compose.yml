@@ -9,6 +9,7 @@ services:
     build:
       context: .
     deploy:
-      replicas: 4
+      mode: replicated
+      replicas: 6
     environment:
       - SPRING_REDIS_HOST=redis

@@ -22,7 +22,7 @@ public class GamerTest {
         gamer.setAvatar("ABC");
         gamerRepository.save(gamer);
 
-        final Gamer gamer1 = gamerRepository.getOne(1L);
+        final Gamer gamer1 = gamerRepository.getOne(gamer.getId());
         assertEquals("The Master", gamer1.getAlias());
     }
 }
