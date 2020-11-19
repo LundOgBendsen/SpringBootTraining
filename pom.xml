@@ -14,7 +14,7 @@
         <module>Maven-ex02-ApachePOI</module>
         <module>SpringBoot-ex01-HelloSpringBoot</module>
         <module>SpringBoot-ex02-JpaTx</module>
-        <module>SpringBoot-ex03-Docker</module>
+<!--        <module>SpringBoot-ex03-Docker</module>-->
         <module>SpringBoot-ex04-DI</module>
         <module>SpringBoot-ex05-Lombok</module>
         <module>SpringBoot-ex06-Servlets</module>
