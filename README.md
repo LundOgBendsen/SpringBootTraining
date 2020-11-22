@@ -1,6 +1,28 @@
 # Spring Boot Training
 Repo for Spring and Spring Boot projects for training and courses
 
+## Vagrant Guide
+cd SpringBootTraining/vagrant
+vagrant plugin install vagrant-docker-compose
+vagrant up
+vagrant ssh
+
+### Run RabbitMQ
+docker-compose -f /springboottraining/springboot-ex20-rabbitmq/docker-compose.yml up
+### Run Redis
+docker-compose -f /springboottraining/springboot-ex18-scheduler/docker-compose.yml up
+### Run MySQL
+docker-compose -f /springboottraining/springboot-ex19-persistence/docker-compose.yml up
+### Run Mongo
+docker-compose -f /springboottraining/springboot-ex10-mongo/docker-compose.yml up
+### Run Kibana
+docker-compose -f /springboottraining/SpringBoot-ex08-Logging/docker-compose.yml up
+
+
+When script is complete(ca 3-5 minutter), use your browser to hit localhost:15672 and login as guest/guest
+
+
+
 ## Project overview
 
 | No     | Project                                                            | Description                         |
