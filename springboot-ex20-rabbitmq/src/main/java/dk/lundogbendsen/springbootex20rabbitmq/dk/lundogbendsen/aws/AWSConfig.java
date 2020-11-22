@@ -1,4 +1,4 @@
-package dk.lundogbendsen.springbootex20rabbitmq.dk.lundogbendsen.rabbitmq;
+package dk.lundogbendsen.springbootex20rabbitmq.dk.lundogbendsen.aws;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
-@EnableSqs
+//@EnableSqs
 public class AWSConfig {
     @Bean
     @Primary

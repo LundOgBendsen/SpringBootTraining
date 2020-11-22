@@ -18,15 +18,9 @@ public class ProducerConfig {
         return ExchangeBuilder.topicExchange(EXCHANGE).build();
     }
 
-    @Bean
-    // Java2Java converter -
-    public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {
-        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(producerJackson2MessageConverter());
-        return rabbitTemplate;
-    }
-
-    @Bean
+//    @Bean
+    // Adding this bean will set the RabbitTemplates messageConverter to Jackson2JsonMessageConverter
+    // enabling sending pojos in the convertAndSend()
     public Jackson2JsonMessageConverter producerJackson2MessageConverter() {
         return new Jackson2JsonMessageConverter();
     }

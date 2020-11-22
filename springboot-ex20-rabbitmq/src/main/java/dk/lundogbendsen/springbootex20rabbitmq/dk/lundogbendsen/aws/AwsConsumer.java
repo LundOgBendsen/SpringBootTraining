@@ -1,4 +1,4 @@
-package dk.lundogbendsen.springbootex20rabbitmq.dk.lundogbendsen.rabbitmq;
+package dk.lundogbendsen.springbootex20rabbitmq.dk.lundogbendsen.aws;
 
 import org.springframework.cloud.aws.messaging.listener.annotation.SqsListener;
 import org.springframework.stereotype.Service;

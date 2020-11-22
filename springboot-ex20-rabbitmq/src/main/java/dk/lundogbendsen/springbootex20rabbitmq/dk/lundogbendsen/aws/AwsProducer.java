@@ -1,4 +1,4 @@
-package dk.lundogbendsen.springbootex20rabbitmq.dk.lundogbendsen.rabbitmq;
+package dk.lundogbendsen.springbootex20rabbitmq.dk.lundogbendsen.aws;
 
 import com.amazonaws.services.sqs.AmazonSQSAsync;
 import org.springframework.beans.factory.annotation.Autowired;
