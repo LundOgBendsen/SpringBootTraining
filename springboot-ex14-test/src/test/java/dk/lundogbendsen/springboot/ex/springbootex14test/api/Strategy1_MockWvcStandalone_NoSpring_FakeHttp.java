@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
-public class PersonControllerNoSpringFakeHttp {
+public class Strategy1_MockWvcStandalone_NoSpring_FakeHttp {
 
     private MockMvc mvc;
 
@@ -34,7 +34,10 @@ public class PersonControllerNoSpringFakeHttp {
     @BeforeEach
     public void setup() {
         // MockMvc standalone approach
-        mvc = MockMvcBuilders.standaloneSetup(personController).build();
+        mvc = MockMvcBuilders.standaloneSetup(personController)
+//                .setControllerAdvice(new controlleradvice...)
+//                .addFilters(new filter...)
+                .build();
     }
 
     @BeforeEach
