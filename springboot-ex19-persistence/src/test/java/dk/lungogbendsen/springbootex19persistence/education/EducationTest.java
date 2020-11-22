@@ -78,6 +78,14 @@ public class EducationTest {
     }
 
     @Test
+    public void testQueryByExampleSimple() {
+        // Declare the Example template:
+        Example<? extends Course> example = Example.of(Course.builder().subject("philosophy").build());
+        // Ask the repository to find entities that matches the example
+        final Optional<? extends Course> artCourse = courseRepository.findOne(example);
+        assertEquals("philosophy", artCourse.get().getSubject());
+    }
+    @Test
     public void testQueryByExample() {
         final ExampleMatcher partialSubjectMatcher = ExampleMatcher.matchingAny()
                 .withMatcher("p1", ExampleMatcher.GenericPropertyMatcher.of(ExampleMatcher.StringMatcher.CONTAINING));
@@ -116,4 +124,24 @@ public class EducationTest {
         final List<Student> johnson = teacherRepository.getStudents("Johnson");
         assertEquals(3, johnson.size());
     }
+
+//    @Test
+//    public void testStudentsAttendingCourse() {
+//        final List<Student> students = studentRepository.findAllByCoursesContaining(philosophy);
+//        assertEquals(3, students.size());
+//    }
+
+//    @Test
+//    public void testCoursesToughtByTeacher() {
+//        final List<Course> allByTeachesIsNull = courseRepository.findAllByTeacher(johnson);
+//        assertEquals(1, allByTeachesIsNull.size());
+//    }
+
+//    @Test
+//    public void testStudentsToughtByTeacher() {
+//        final List<Student> students = studentRepository.findAllByCoursesTeacherName("Johnson");
+//        assertEquals(3, students.size());
+//    }
+
+
 }
