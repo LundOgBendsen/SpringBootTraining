@@ -5,11 +5,36 @@ services:
     ports:
     - 6379:6379
 
-  service:
+#  service:
+#    build:
+#      context: .
+#    deploy:
+#      mode: replicated
+#      replicas: 4
+#    environment:
+#      - SPRING_REDIS_HOST=redis
+
+  service1:
     build:
       context: .
-    deploy:
-      mode: replicated
-      replicas: 6
     environment:
       - SPRING_REDIS_HOST=redis
+
+  service2:
+    build:
+      context: .
+    environment:
+      - SPRING_REDIS_HOST=redis
+
+  service3:
+    build:
+      context: .
+    environment:
+      - SPRING_REDIS_HOST=redis
+
+  service4:
+    build:
+      context: .
+    environment:
+      - SPRING_REDIS_HOST=redis
+
