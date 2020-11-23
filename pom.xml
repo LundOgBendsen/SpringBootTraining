@@ -38,5 +38,7 @@
         <module>maven-plugins-inspection</module>
         <module>SpringBoot-Rest-PersonApi-Assignment</module>
         <module>SpringBoot-Rest-PersonApi-Assignment-api</module>
+        <module>person-api-assignment</module>
+        <module>url-shortener-service</module>
     </modules>
 </project>
