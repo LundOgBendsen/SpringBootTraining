@@ -1,8 +1,11 @@
 package dk.lundogbendsen.springboot.urlshortenerservice;
 
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class UrlShortenerService {
 
     private Map<String, String> tokens = new HashMap<String, String>();
