@@ -1,13 +1,26 @@
 package dk.lundogbendsen.springboot.urlshortenerservice;
 
+import dk.lundogbendsen.springboot.urlshortenerservice.model.ShortenedUrl;
+import dk.lundogbendsen.springboot.urlshortenerservice.repository.ShortenedUrlRepository;
 import dk.lundogbendsen.springboot.urlshortenerservice.service.TokenAlreadyExistsException;
 import dk.lundogbendsen.springboot.urlshortenerservice.service.UrlShortenerService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class UrlShortenerServiceTest {
 
+    @Mock
+    ShortenedUrlRepository shortenedUrlRepository;
+    @InjectMocks
     private UrlShortenerService urlShortenerService = new UrlShortenerService();
 
     @Test
@@ -21,6 +34,16 @@ public class UrlShortenerServiceTest {
         String abc = urlShortenerService.shorten("abc", "http://dr.dk");
         assertEquals("abc", abc);
 
+
+        // Setup canned answer
+        ShortenedUrl shortenedUrl = new ShortenedUrl();
+        shortenedUrl.setToken("abc");
+        shortenedUrl.setUrl("http://dr.dk");
+        Optional<ShortenedUrl> optional = Optional.of(shortenedUrl);
+        when(shortenedUrlRepository.findByToken("abc")).thenReturn(optional);
+
+
+        // Test resolve
         String url = urlShortenerService.getTargetUrl(abc);
         assertEquals("http://dr.dk", url);
 
@@ -30,6 +53,13 @@ public class UrlShortenerServiceTest {
     public void testUpdateTokenGivesException() {
         String abc = urlShortenerService.shorten("abc", "http://dr.dk");
         assertEquals("abc", abc);
+
+        // Setup canned answer
+        ShortenedUrl shortenedUrl = new ShortenedUrl();
+        shortenedUrl.setToken("abc");
+        shortenedUrl.setUrl("http://dr.dk");
+        Optional<ShortenedUrl> optional = Optional.of(shortenedUrl);
+        when(shortenedUrlRepository.findByToken("abc")).thenReturn(optional);
 
 
         try {
