@@ -1,30 +1,48 @@
 package dk.lundogbendsen.springboot.urlshortenerservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UrlShortenerService {
 
+    @Autowired
+    ShortenedUrlRepository shortenedUrlRepository;
+
     private Map<String, String> tokens = new HashMap<String, String>();
 
     public String shorten(String suggestedToken, String url) {
-        if (tokens.containsKey(suggestedToken)) {
+        Optional<ShortenedUrl> shortenedUrl = shortenedUrlRepository.findByToken(suggestedToken);
+        if (shortenedUrl.isPresent()) {
             throw new TokenAlreadyExistsException();
         }
 
-        tokens.put(suggestedToken, url);
+        ShortenedUrl shortened = new ShortenedUrl();
+        shortened.setToken(suggestedToken);
+        shortened.setUrl(url);
+        shortenedUrlRepository.save(shortened);
 
         return suggestedToken;
     }
 
     public void delete(String token) {
-        tokens.remove(token);
+        Optional<ShortenedUrl> shortenedUrl = shortenedUrlRepository.findByToken(token);
+        if (shortenedUrl != null) {
+            shortenedUrlRepository.delete(shortenedUrl.get());
+        }
     }
 
     public String getTargetUrl(String token) {
-        return tokens.get(token);
+        final Optional<ShortenedUrl> shortenedUrl = shortenedUrlRepository.findByToken(token);
+        if (shortenedUrl.isPresent()) {
+            return shortenedUrl.get().getUrl();
+        } else {
+            return null;
+        }
+
     }
 }
