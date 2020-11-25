@@ -1,5 +1,7 @@
 package dk.lundogbendsen.springboot.urlshortenerservice;
 
+import dk.lundogbendsen.springboot.urlshortenerservice.service.TokenAlreadyExistsException;
+import dk.lundogbendsen.springboot.urlshortenerservice.service.UrlShortenerService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

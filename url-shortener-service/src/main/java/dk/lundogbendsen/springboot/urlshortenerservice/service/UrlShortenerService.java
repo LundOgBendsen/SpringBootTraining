@@ -1,5 +1,7 @@
-package dk.lundogbendsen.springboot.urlshortenerservice;
+package dk.lundogbendsen.springboot.urlshortenerservice.service;
 
+import dk.lundogbendsen.springboot.urlshortenerservice.model.ShortenedUrl;
+import dk.lundogbendsen.springboot.urlshortenerservice.repository.ShortenedUrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

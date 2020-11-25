@@ -1,5 +1,6 @@
 package dk.lundogbendsen.springboot.urlshortenerservice;
 
+import dk.lundogbendsen.springboot.urlshortenerservice.service.UrlShortenerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

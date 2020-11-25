@@ -1,4 +1,4 @@
-package dk.lundogbendsen.springboot.urlshortenerservice;
+package dk.lundogbendsen.springboot.urlshortenerservice.model;
 
 import lombok.Data;
 

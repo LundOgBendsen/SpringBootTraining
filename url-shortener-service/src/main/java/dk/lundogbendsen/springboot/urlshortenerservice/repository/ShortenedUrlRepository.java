@@ -1,5 +1,6 @@
-package dk.lundogbendsen.springboot.urlshortenerservice;
+package dk.lundogbendsen.springboot.urlshortenerservice.repository;
 
+import dk.lundogbendsen.springboot.urlshortenerservice.model.ShortenedUrl;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
